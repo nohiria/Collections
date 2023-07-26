@@ -55,4 +55,18 @@ public class DogService {
             choice = input.nextLine();
         }while(choice.equalsIgnoreCase("y"));
     }
+    
+    public void updateDogBreed(String oldBreed, String newBreed){
+        Dog dogToUpdate = dogsList.stream()
+            .filter(d -> d.getBreed().equalsIgnoreCase(oldBreed))
+            .findFirst()
+            .orElse(null);
+
+        if (dogToUpdate != null) {
+            System.out.println("Updating " + oldBreed + " to " + newBreed);
+            dogToUpdate.setBreed(newBreed);
+        } else {
+            System.out.println(oldBreed + " not found in the list");
+        }
+    }
 }

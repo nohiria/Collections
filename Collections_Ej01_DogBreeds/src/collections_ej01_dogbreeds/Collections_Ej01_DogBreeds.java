@@ -6,6 +6,7 @@ salir, se mostrará todos los perros guardados en el ArrayList.
  */
 package collections_ej01_dogbreeds;
 
+import java.util.Scanner;
 import services.DogService;
 
 /**
@@ -18,9 +19,43 @@ public class Collections_Ej01_DogBreeds {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Scanner input= new Scanner(System.in);
         DogService ds= new DogService();
-        ds.readDogBreeds();
-        ds.showDogsList();
+        String choice;
+        do{
+            System.out.println("Menu");
+            System.out.println("1. Add breeds");
+            System.out.println("2. Show list");
+            System.out.println("3. Update breed");
+            System.out.println("Choice an option");
+            int option = Integer.parseInt(input.nextLine());
+            while (option < 1 || option > 3) {
+                System.out.println("Enter a valid option");
+                option = Integer.parseInt(input.nextLine());
+            }
+            switch (option) {
+                case 1:
+                    ds.readDogBreeds();
+                    break;
+                case 2:
+                    ds.showDogsList();
+                    break;
+                case 3:
+                    System.out.println("Enter the breed you want to update");
+                    String oldBreed = input.nextLine();
+                    System.out.println("Enter the new breed");
+                    String newBreed = input.nextLine();
+                    ds.updateDogBreed(oldBreed, newBreed);
+                    break;
+            }
+            
+            System.out.println("Do you want to go back to the menu? y/n");
+            choice= input.nextLine();
+            if(!choice.equalsIgnoreCase("y")){
+                System.out.println("Run finished");
+            }
+        }while(choice.equalsIgnoreCase("y"));
+        
     }
     
 }
