@@ -19,4 +19,8 @@ public class DogService {
         dogs= new ArrayList<>();
     }
     
+    public void addDog(String breed){
+        Dog dog= new Dog(breed);
+        dogs.add(dog);
+    }
 }
