@@ -5,10 +5,18 @@
  */
 package services;
 
+import entities.Dog;
+import java.util.ArrayList;
+
 /**
  *
  * @author nohyv
  */
 public class DogService {
+    private final ArrayList<Dog> dogs;
+    
+    public DogService(){
+        dogs= new ArrayList<>();
+    }
     
 }
