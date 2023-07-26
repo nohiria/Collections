@@ -7,20 +7,43 @@ package services;
 
 import entities.Dog;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
  * @author nohyv
  */
 public class DogService {
-    private final ArrayList<Dog> dogs;
+    private final ArrayList<Dog> dogsList;
     
     public DogService(){
-        dogs= new ArrayList<>();
+        dogsList= new ArrayList<>();
     }
     
-    public void addDog(String breed){
-        Dog dog= new Dog(breed);
-        dogs.add(dog);
+    public Dog addDog(String breed){
+        System.out.println("Adding "+breed+" to the list");
+        Dog d= new Dog(breed);
+        dogsList.add(d);
+        return d;
+    }
+    
+    public void showDogsList(){
+        dogsList.forEach((dog) -> {
+            System.out.println(dog.getBreed());
+        });
+    }
+    
+    public void readDogBreeds(){
+        Scanner input= new Scanner(System.in);
+        String choice;
+        
+        do{
+            System.out.println("Enter the breed of the dog:");
+            String breed= input.nextLine();
+            addDog(breed);
+            
+            System.out.print("Do you want to add another dog? (y/n): ");
+            choice = input.nextLine();
+        }while(choice.equalsIgnoreCase("y"));
     }
 }
