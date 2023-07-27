@@ -41,15 +41,20 @@ public class Collections_Ej01_DogBreeds {
                     ds.showDogsList();
                     break;
                 case 3:
-                    System.out.println("Enter the breed you want to update");
-                    String oldBreed = input.nextLine();
+                    int listSize= ds.showIndexDogList();
+                    System.out.println("Choose the item to update");
+                    int item= Integer.parseInt(input.nextLine());
+                    while(item>listSize){
+                        System.out.println("Enter a valid number");
+                        item= Integer.parseInt(input.nextLine());
+                    }
                     System.out.println("Enter the new breed");
-                    String newBreed = input.nextLine();
-                    ds.updateDogBreed(oldBreed, newBreed);
+                    String newBreed= input.nextLine();
+                    ds.updateDogBreed((item-1), newBreed);
                     break;
             }
             
-            System.out.println("Do you want to go back to the menu? y/n");
+            System.out.print("Do you want to go back to the menu? y/n:");
             choice= input.nextLine();
             if(!choice.equalsIgnoreCase("y")){
                 System.out.println("Run finished");
