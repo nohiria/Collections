@@ -36,7 +36,7 @@ public class Collections_Ej01_DogBreeds {
             System.out.println("4. Eliminate breed");
             System.out.println("Choice an option");
             int option = Integer.parseInt(input.nextLine());
-            while (option < 1 || option > 3) {
+            while (option < 1 || option > 4) {
                 System.out.println("Enter a valid option");
                 option = Integer.parseInt(input.nextLine());
             }
@@ -45,10 +45,10 @@ public class Collections_Ej01_DogBreeds {
                     ds.readDogBreeds();
                     break;
                 case 2:
-                    ds.showDogsList();
+                    ds.showListOfDogs();
                     break;
                 case 3:
-                    int listSize= ds.showIndexDogList();
+                    int listSize= ds.showNumbListOfDogs();
                     System.out.println("Choose the item to update");
                     int item= Integer.parseInt(input.nextLine());
                     while(item>listSize){
@@ -59,10 +59,16 @@ public class Collections_Ej01_DogBreeds {
                     String newBreed= input.nextLine();
                     ds.updateDogBreed((item-1), newBreed);
                     break;
+                case 4:
+                    ds.showListOfDogs();
+                    System.out.println("Enter the breed of the dog to delete");
+                    ds.eliminateDogBreed(input.nextLine());
+                    
             }
             
             System.out.print("Do you want to go back to the menu? y/n:");
             choice= input.nextLine();
+            
             if(!choice.equalsIgnoreCase("y")){
                 System.out.println("Run finished");
             }

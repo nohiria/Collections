@@ -40,18 +40,25 @@ public class DogService {
         dogsList.add(dog);
     }
     
+    public void showListOfDogs(){
+        dogsList.forEach((dog) -> {
+            System.out.println(dog.getBreed());
+        });
+    }
+    
     public void showSortedListOfDogs(){
         System.out.println("List of dogs alphabetically sorted");
         dogsList.sort((dog1,dog2)->dog1.getBreed().compareTo(dog2.getBreed()));
-        showIndexListOfDogs();
+        showListOfDogs();
     }
     
-    public int showListOfDogs(){
+    public int showNumbListOfDogs(){
         int index= 1;
         
-        dogsList.forEach((dog) -> {
+        for(Dog dog: dogsList) {
             System.out.println(index+". "+dog.getBreed());
-        });
+            index++;
+        }
         
         return dogsList.size();
     }
@@ -74,6 +81,7 @@ public class DogService {
             
             System.out.print("Do you want to add another dog? (y/n): ");
             choice = input.nextLine();
+            
         }while(choice.equalsIgnoreCase("y"));
     }
     
@@ -84,15 +92,20 @@ public class DogService {
     }
     
     public void eliminateDogBreed(String breed){
+        boolean eliminated= false;
         Iterator<Dog> iterator= dogsList.iterator();
         
         while(iterator.hasNext()){
             if(iterator.next().getBreed().equalsIgnoreCase(breed)){
                 iterator.remove();
-                System.out.println("Sucesfully eliminated!");
-            }else{
-                System.out.println(breed+" not found");
+                eliminated= true;
             }
+        }
+        
+        if(eliminated){
+            System.out.println("Sucesfully eliminated");
+        }else{
+            System.out.println(breed+" not found");
         }
     }
 }
