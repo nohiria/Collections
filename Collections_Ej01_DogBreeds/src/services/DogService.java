@@ -7,6 +7,7 @@ package services;
 
 import entities.Dog;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -21,7 +22,7 @@ public class DogService {
     }
     
     public Dog createDog(String breed) {
-        if (dogsList.stream().anyMatch(d -> d.getBreed().equalsIgnoreCase(breed))) {
+        if (breedExist(breed)) {
             System.out.println(breed + " is already in the list");
             return null;
         } else {
@@ -31,21 +32,26 @@ public class DogService {
         }
     }
     
+    public boolean breedExist(String breed){
+        return dogsList.stream().anyMatch((dog) -> (dog.getBreed().equalsIgnoreCase(breed)));
+    }
+    
     public void addDog(Dog dog){
         dogsList.add(dog);
     }
     
-    public void showDogsList(){
-        dogsList.forEach((dog) -> {
-            System.out.println(dog.getBreed());
-        });
+    public void showSortedListOfDogs(){
+        System.out.println("List of dogs alphabetically sorted");
+        dogsList.sort((dog1,dog2)->dog1.getBreed().compareTo(dog2.getBreed()));
+        showIndexListOfDogs();
     }
     
-    public int showIndexDogList(){
-        for(int i=0; i<dogsList.size(); i++){
-            Dog dog= dogsList.get(i);
-            System.out.println((i+1)+". "+dog.getBreed());
-        }
+    public int showListOfDogs(){
+        int index= 1;
+        
+        dogsList.forEach((dog) -> {
+            System.out.println(index+". "+dog.getBreed());
+        });
         
         return dogsList.size();
     }
@@ -57,11 +63,13 @@ public class DogService {
         do{
             System.out.println("Enter the breed of the dog:");
             String breed= input.nextLine();
-            Dog addedDog= createDog(breed);
-            addDog(addedDog);
             
-            if(addedDog!=null){
-                System.out.println("Successfully added: " + addedDog.getBreed());
+            if(breedExist(breed)){
+                System.out.println(breed+" is already in the list");
+            }else{
+                Dog addedDog= createDog(breed);
+                addDog(addedDog);
+                System.out.println(breed+" sucesfully added");
             }
             
             System.out.print("Do you want to add another dog? (y/n): ");
@@ -73,5 +81,18 @@ public class DogService {
         Dog dog= createDog(breed);
         
         dogsList.set(index, dog);
+    }
+    
+    public void eliminateDogBreed(String breed){
+        Iterator<Dog> iterator= dogsList.iterator();
+        
+        while(iterator.hasNext()){
+            if(iterator.next().getBreed().equalsIgnoreCase(breed)){
+                iterator.remove();
+                System.out.println("Sucesfully eliminated!");
+            }else{
+                System.out.println(breed+" not found");
+            }
+        }
     }
 }
