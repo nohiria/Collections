@@ -86,9 +86,13 @@ public class DogService {
     }
     
     public void updateDogBreed(int index, String breed){
+//        Dog dog= dogsList.get(index);
+//          
+//        dog.setBreed(breed);
         Dog dog= createDog(breed);
         
         dogsList.set(index, dog);
+          
     }
     
     public void eliminateDogBreed(String breed){
