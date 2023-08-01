@@ -5,8 +5,10 @@
  */
 package services;
 
+import Utilities.Comparators;
 import entities.Dog;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -48,7 +50,7 @@ public class DogService {
     
     public void showSortedListOfDogs(){
         System.out.println("List of dogs alphabetically sorted");
-        dogsList.sort((dog1,dog2)->dog1.getBreed().compareTo(dog2.getBreed()));
+        Collections.sort(dogsList, Comparators.sortListOfDogsAlphabetically);
         showListOfDogs();
     }
     

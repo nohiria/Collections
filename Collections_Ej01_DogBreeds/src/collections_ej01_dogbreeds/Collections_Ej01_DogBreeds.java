@@ -63,6 +63,7 @@ public class Collections_Ej01_DogBreeds {
                     ds.showListOfDogs();
                     System.out.println("Enter the breed of the dog to delete");
                     ds.eliminateDogBreed(input.nextLine());
+                    ds.showSortedListOfDogs();
                     
             }
             
