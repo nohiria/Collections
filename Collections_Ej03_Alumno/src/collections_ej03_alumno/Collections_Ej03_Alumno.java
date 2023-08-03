@@ -13,6 +13,8 @@ promedio final, devuelto por el método y mostrado en el main.
  */
 package collections_ej03_alumno;
 
+import Servicio.ServicioAlumno;
+
 /**
  *
  * @author nohyv
@@ -23,7 +25,9 @@ public class Collections_Ej03_Alumno {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ServicioAlumno sa= new ServicioAlumno();
+        sa.crearListaAlumnos();
+        sa.notaFinal();
     }
     
 }

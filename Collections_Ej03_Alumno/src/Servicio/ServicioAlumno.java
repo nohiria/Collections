@@ -23,7 +23,7 @@ public class ServicioAlumno {
     }
    
     //Método para crear alumno
-    public Alumno crearALumno(){
+    private Alumno crearALumno(){
         Alumno alumno= new Alumno();
         ArrayList<Integer> notas= new ArrayList<>();
         
@@ -41,17 +41,17 @@ public class ServicioAlumno {
     }
     
     //Añadir alumno a la lista
-    public void agregarAlumno(Alumno alumno){
+    private void agregarAlumno(Alumno alumno){
         listaDeAlumnos.add(alumno);
     }
     
     //Bucle para agregar alumnos
     public void crearListaAlumnos(){
-        System.out.println("¿Desea agregar un alumno a la lista de alumnos?");
+        System.out.print("¿Desea agregar un alumno a la lista de alumnos? y/n: ");
         String respuesta= input.nextLine();
         while(respuesta.equalsIgnoreCase("y")){
             agregarAlumno(crearALumno());
-            System.out.println("¿Desea agregar otro alumno a la lista?");
+            System.out.print("¿Desea agregar otro alumno a la lista? y/n: ");
             respuesta= input.nextLine();
         }
     }
@@ -67,7 +67,7 @@ public class ServicioAlumno {
         }
     }
     
-    public Alumno buscarAlumno(String alumnoIngresado){
+    private Alumno buscarAlumno(String alumnoIngresado){
         for(Alumno alumno: listaDeAlumnos){
             if(alumnoIngresado.equalsIgnoreCase(alumno.getNombre())){
                 return alumno;
@@ -76,7 +76,7 @@ public class ServicioAlumno {
         return null;
     }
     
-    public void calcularNota(Alumno alumno){
+    private void calcularNota(Alumno alumno){
         int suma= 0;
         int cantidadDeNotas= alumno.getNotas().size();
         double promedioFinal;
@@ -84,6 +84,6 @@ public class ServicioAlumno {
         
         promedioFinal= (double)suma/cantidadDeNotas;
         
-        System.out.println("La nota final de"+alumno.getNombre()+"es: "+promedioFinal);
+        System.out.println("La nota final de "+alumno.getNombre()+" es: "+promedioFinal);
     }
 }
