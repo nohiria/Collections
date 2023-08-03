@@ -38,12 +38,25 @@ public class ServicioPelicula {
     }
     
     public void crearListaPeliculas(){
+        String respuesta;
         do{
             System.out.print("¿Desea añadir una película a la lista? s/n");
-            String respuesta= input.nextLine();
+            respuesta= input.nextLine();
             if(respuesta.equalsIgnoreCase("s")){
                 agregarPeliculaLista(crearPelicula());
             }
-        }while(respuesta!="n");
+        }while(respuesta.equalsIgnoreCase("y"));
+    }
+    
+    public void mostrarTodasLasPeliculas(){
+        listaPeliculas.forEach((pelicula) -> {
+            System.out.println(pelicula.toString());
+        });
+    }
+    
+    public void mostrarPeliculasMayorAHora(){
+        listaPeliculas.stream().filter((pelicula) -> (pelicula.getHorasDuracion()>1)).forEachOrdered((pelicula) -> {
+            System.out.println(pelicula.toString());
+        });
     }
 }

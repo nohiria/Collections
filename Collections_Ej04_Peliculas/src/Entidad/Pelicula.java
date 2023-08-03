@@ -48,5 +48,11 @@ public class Pelicula {
     public void setHorasDuracion(double horasDuracion) {
         this.horasDuracion = horasDuracion;
     }
+
+    @Override
+    public String toString() {
+        return "Pelicula{" + "Titulo=" + titulo + ", Director=" + director + ", Horas de duración=" + horasDuracion + '}';
+    }
+    
     
 }
