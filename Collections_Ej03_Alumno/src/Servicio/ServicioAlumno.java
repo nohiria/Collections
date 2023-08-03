@@ -57,6 +57,33 @@ public class ServicioAlumno {
     }
     
     public void notaFinal(){
+        System.out.println("Ingrese el nombre del alumno a buscar");
+        String alumnoIngresado= input.nextLine();
+        Alumno alumno= buscarAlumno(alumnoIngresado);
+        if(alumno!=null){
+            calcularNota(alumno);
+        }else{
+            System.out.println("Alumno no encontrado");
+        }
+    }
+    
+    public Alumno buscarAlumno(String alumnoIngresado){
+        for(Alumno alumno: listaDeAlumnos){
+            if(alumnoIngresado.equalsIgnoreCase(alumno.getNombre())){
+                return alumno;
+            }
+        }
+        return null;
+    }
+    
+    public void calcularNota(Alumno alumno){
+        int suma= 0;
+        int cantidadDeNotas= alumno.getNotas().size();
+        double promedioFinal;
+        suma = alumno.getNotas().stream().map((nota) -> nota).reduce(suma, Integer::sum);
         
+        promedioFinal= (double)suma/cantidadDeNotas;
+        
+        System.out.println("La nota final de"+alumno.getNombre()+"es: "+promedioFinal);
     }
 }
