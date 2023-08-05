@@ -9,6 +9,6 @@ package Utilidades;
  *
  * @author nohyv
  */
-public class Comparator {
+public class Comparators {
     
 }
