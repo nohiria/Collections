@@ -12,7 +12,7 @@ package Entidad;
 public class Pelicula {
     private String titulo;
     private String director;
-    private double horasDuracion;
+    private Double horasDuracion;
     
     //Constructors
     public Pelicula() {
@@ -41,19 +41,21 @@ public class Pelicula {
         this.director = director;
     }
 
-    public double getHorasDuracion() {
+    public Double getHorasDuracion() {
         return horasDuracion;
     }
 
-    public void setHorasDuracion(double horasDuracion) {
+    public void setHorasDuracion(Double horasDuracion) {
         this.horasDuracion = horasDuracion;
     }
-
+    
     //toString
+
     @Override
     public String toString() {
-        return "Pelicula{" + "Titulo=" + titulo + ", Director=" + director + ", Horas de duración=" + horasDuracion + '}';
+        return "Pelicula{" + "titulo=" + titulo + ", director=" + director + ", horasDuracion=" + horasDuracion + '}';
     }
+    
     
     
 }
