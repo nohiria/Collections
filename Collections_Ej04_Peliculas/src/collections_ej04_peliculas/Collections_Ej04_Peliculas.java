@@ -22,6 +22,8 @@ pantalla.
  */
 package collections_ej04_peliculas;
 
+import Servicio.ServicioPelicula;
+
 /**
  *
  * @author nohyv
@@ -32,7 +34,8 @@ public class Collections_Ej04_Peliculas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ServicioPelicula sp= new ServicioPelicula();
+        sp.menuPeliculas();
     }
     
 }

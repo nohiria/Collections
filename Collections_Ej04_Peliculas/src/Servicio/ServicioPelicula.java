@@ -50,7 +50,7 @@ public class ServicioPelicula {
                 }else if(listaPeliculas.isEmpty()){
                     System.out.println("La lista debe tener al menos una película para continuar");
                 }
-            }while(respuesta.equalsIgnoreCase("y"));
+            }while(respuesta.equalsIgnoreCase("s"));
         }
 
     //Métodos para mostrar películas
@@ -69,18 +69,22 @@ public class ServicioPelicula {
     //Métodos para ordenar lista
         public void ordenarPeliculasSegunHoraAsc(){
             Collections.sort(listaPeliculas, Comparators.ordenarDuracionDeMenorAMayor);
+            mostrarTodasLasPeliculas();
         }
 
         public void ordenarPeliculasSegunHoradDesc(){
             Collections.sort(listaPeliculas, Comparators.ordenarDuracionDeMayorAMenor);
+            mostrarTodasLasPeliculas();
         }
 
         public void ordenarPeliculasSegunTituloAlf(){
             Collections.sort(listaPeliculas, Comparators.ordenarTituloAlfabeticamente);
+            mostrarTodasLasPeliculas();
         }
 
         public void ordenarPeliculasSegunTituloAlfRev(){
             Collections.sort(listaPeliculas, Comparators.ordenarTituloAlfabeticamenteRev);
+            mostrarTodasLasPeliculas();
         }
         
     //Menú de opciones
@@ -96,12 +100,36 @@ public class ServicioPelicula {
                 System.out.println("5. Ordenar Peliculas según Hora de mayor a menor");
                 System.out.println("6. Ordenar Peliculas según Titulo de menor a mayor");
                 System.out.println("7. Ordenar Peliculas según Titulo de mayor a menor");
-                System.out.println("Sellecione una opción");
+                System.out.println("Seleccione una opción");
                 int opcion= Integer.parseInt(input.nextLine());
                 while(opcion<1||opcion>7){
                     System.out.println("Ingrese un número válido");
                     opcion= Integer.parseInt(input.nextLine());
                 }
-            }while(!respuesta.equalsIgnoreCase("y"));
+                switch(opcion){
+                    case 1: 
+                        crearListaPeliculas();
+                        break;
+                    case 2: 
+                        mostrarTodasLasPeliculas();
+                        break;
+                    case 3: 
+                        mostrarPeliculasMayorAHora();
+                        break;
+                    case 4: ordenarPeliculasSegunHoraAsc();
+                        break;
+                    case 5: 
+                        ordenarPeliculasSegunHoradDesc();
+                        break;
+                    case 6: 
+                        ordenarPeliculasSegunTituloAlf();
+                        break;
+                    case 7: 
+                        ordenarPeliculasSegunTituloAlfRev();
+                        break;
+                }
+                System.out.println("¿Desea volver al menú? s/n");
+                respuesta= input.nextLine();
+            }while(respuesta.equalsIgnoreCase("s"));
         }
 }
